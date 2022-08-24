@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { AddServiceProvider, Login, Navbar, ServiceProvidersList } from './components';
+import UpdateServiceProvider from './components/UpdateServiceProvider';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <Routes>
+        <Route index element={<ServiceProvidersList/>}/>
+        <Route path="/" element={<ServiceProvidersList/>}/>
+        <Route path="/serviceproviders" element={<ServiceProvidersList/>}/>
+        <Route path='/addserviceprovider' element={<AddServiceProvider/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/updateserviceprovider/:id' element={<UpdateServiceProvider/>}/>
+      </Routes>
     </div>
   );
 }
